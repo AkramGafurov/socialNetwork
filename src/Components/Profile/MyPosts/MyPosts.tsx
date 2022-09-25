@@ -1,28 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
-import  {PostPageType, PostType} from "../../Redux/Type";
+import  {ProfilePageType, PostType,MyPostPageType} from "../../Redux/Type";
+import { ChangeEvent } from 'react';
+import state from '../../Redux/State'
 
 
+const MyPosts = (props: MyPostPageType) => {
 
-const MyPosts = (props: PostPageType) => {
-
-    let postComponents = props.posts.map(item => {
-        return <Post post={item.post} likesCount={item.likesCount} avatarSRC={item.avatarSRC} id={item.id}/>
+    let postComponents = props.postPage.posts.map((item, index) => {
+        return <Post key={index} post={item.post} likesCount={item.likesCount} avatarSRC={item.avatarSRC} id={item.id}/>
     })
 
     let newElementPost = React.createRef<HTMLTextAreaElement>()
+
     const onClickHandler = () => {
         let userPost = newElementPost.current?.value
-        userPost && props.addPost(userPost)
+        userPost && props.addPost()
     }
 
+    const onPostChange = () => {
+        let newText = newElementPost.current?.value
+        newText && props.upDateNewPostText(newText)
+    }
 
     return (
         <div className={s.content}>
             my posts
             <div>
-                <textarea ref={newElementPost}></textarea>
+                <textarea value={props.postPage.newPostText} onChange={onPostChange} ref={newElementPost} autoFocus/>
+                <textarea value={props.postPage.newPostText} onChange={onPostChange} ref={newElementPost} autoFocus/>
                 <button onClick={onClickHandler}>Add post</button>
             </div>
 

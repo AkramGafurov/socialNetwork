@@ -2,13 +2,13 @@ import React from 'react';
 import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {PostPageType} from '../Redux/Type'
+import {ProfilePageType,MyPostPageType} from '../Redux/Type'
 
-const Profile = (props: PostPageType) => {
+const Profile = (props: MyPostPageType) => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts posts={props.posts} addPost={props.addPost}/>
+            <MyPosts postPage={props.postPage} addPost={props.addPost} upDateNewPostText={props.upDateNewPostText}/>
         </div>
     )
 }

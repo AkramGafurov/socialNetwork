@@ -1,12 +1,12 @@
+export type UserMessageType = {
+    id: number,
+    message: string,
+}
+
 export type DialogType = {
       id: number,
       name: string
   }
-
-export type MessageType = {
-    id: number,
-    message: string
-}
 
 export type PostType = {
     post: string,
@@ -15,22 +15,41 @@ export type PostType = {
     id: number,
 }
 
+export type ProfilePageType = {
+    posts: Array<PostType>,
+    newPostText: string,
+}
+
+export type MessageType = {
+    dialogs: Array<DialogType>,
+    messages: Array<UserMessageType>,
+    tempMessage:string,
+}
+
+export type MessagePageType = {
+    messagePage: MessageType,
+    addMessage: ()=>void,
+    upDateNewUserMessage: (newMessage:string)=>void
+}
+
+export type RootPageType = {
+    messagePage: MessageType,
+    postPage: ProfilePageType
+}
+
 export type PostPageType = {
     posts: Array<PostType>
     addPost: (userPost:string)=>void
 }
 
-export type DialogPageType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>,
+
+
+export type MyPostPageType = {
+    postPage: ProfilePageType
+    addPost: ()=>void
+    upDateNewPostText: (newText:string)=>void
 }
 
-export type AppType = {
-    messagePage: DialogPageType,
-    postPage: PostPageType
-}
-
-export type StateType= {
-  state: AppType
-  addPost: (userPost:string)=>void
+export type AppPropsType = {
+    state: RootPageType,
 }
