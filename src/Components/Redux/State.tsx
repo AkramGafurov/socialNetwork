@@ -1,5 +1,6 @@
 import { DialogType, MessageType, PostType, MessagePageType, RootPageType} from "./Type"
-import rerenderEntireTree from '../../render'
+
+let rerenderEntireTree = (state: RootPageType)=>{}
 
 const state: RootPageType = {
         messagePage: {
@@ -88,5 +89,11 @@ export const upDateNewUserMessage =(newMessage:string)=>{
     state.messagePage.tempMessage = newMessage
     rerenderEntireTree(state)
 }   
+
+export const subscriber=(observer: (state: RootPageType)=> void)=>{
+    rerenderEntireTree=observer;
+}
+
+// export const subscriber=(observer: (state: RootPageType)=> void)=>{return observer}
 
 export default state

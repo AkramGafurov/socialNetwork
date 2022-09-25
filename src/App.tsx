@@ -6,7 +6,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import Profile from "./Components/Profile/Profile";
 import Dialogs from "./Components/Dialogs/Dialogs";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import { DialogType, MessageType, PostType, ProfilePageType, MessagePageType, RootPageType, AppPropsType} from "./Components/Redux/Type"
+import {AppPropsType} from "./Components/Redux/Type"
 import {addPost, upDateNewPostText, addMessage, upDateNewUserMessage} from './Components/Redux/State'
 
 

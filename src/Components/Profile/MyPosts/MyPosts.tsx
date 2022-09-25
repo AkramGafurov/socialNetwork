@@ -28,8 +28,7 @@ const MyPosts = (props: MyPostPageType) => {
         <div className={s.content}>
             my posts
             <div>
-                <textarea value={props.postPage.newPostText} onChange={onPostChange} ref={newElementPost} autoFocus/>
-                <textarea value={props.postPage.newPostText} onChange={onPostChange} ref={newElementPost} autoFocus/>
+                <textarea value={props.postPage.newPostText} onChange={onPostChange} ref={newElementPost} />
                 <button onClick={onClickHandler}>Add post</button>
             </div>
 
