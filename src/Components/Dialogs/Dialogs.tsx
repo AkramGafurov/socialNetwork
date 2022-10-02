@@ -21,7 +21,8 @@ const Dialogs = (props: MessagePageType) => {
     let newMessageElement = React.createRef<HTMLTextAreaElement>()
 
     const addMessage = () => {
-        props.addMessage()
+
+        props.messagePage.tempMessage && props.addMessage()
     }
 
     const upDateNewUserMessage = () => {

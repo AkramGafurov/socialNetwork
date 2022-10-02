@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
+import store from '../../Redux/State'
 import  {ProfilePageType, PostType,MyPostPageType} from "../../Redux/Type";
 import { ChangeEvent } from 'react';
 import state from '../../Redux/State'
@@ -19,7 +20,7 @@ const MyPosts = (props: MyPostPageType) => {
         userPost && props.addPost()
     }
 
-    const onPostChange = () => {
+    const onPostChange = () => {               
         let newText = newElementPost.current?.value
         newText && props.upDateNewPostText(newText)
     }
@@ -28,7 +29,7 @@ const MyPosts = (props: MyPostPageType) => {
         <div className={s.content}>
             my posts
             <div>
-                <textarea value={props.postPage.newPostText} onChange={onPostChange} ref={newElementPost} />
+                <textarea ref={newElementPost} value={props.postPage.newPostText} onChange={onPostChange}/>
                 <button onClick={onClickHandler}>Add post</button>
             </div>
 

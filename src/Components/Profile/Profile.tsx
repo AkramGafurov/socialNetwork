@@ -5,6 +5,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ProfilePageType,MyPostPageType} from '../Redux/Type'
 
 const Profile = (props: MyPostPageType) => {
+   
     return (
         <div className={s.content}>
             <ProfileInfo/>

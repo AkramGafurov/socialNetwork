@@ -6,22 +6,21 @@ import Navbar from "./Components/Navbar/Navbar";
 import Profile from "./Components/Profile/Profile";
 import Dialogs from "./Components/Dialogs/Dialogs";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {AppPropsType} from "./Components/Redux/Type"
-import {addPost, upDateNewPostText, addMessage, upDateNewUserMessage} from './Components/Redux/State'
+import {AppPropsType, } from "./Components/Redux/Type"
 
 
 
 function App(props: AppPropsType) {
+    
     return (
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
                     <Routes>
-                      
-                        <Route path="profile" element={<Profile postPage={props.state.postPage} addPost={addPost} upDateNewPostText={upDateNewPostText}/>}/>
+                        <Route path="profile" element={<Profile postPage={props.store.getState().postPage} addPost={props.store.addPost.bind(props.store)} upDateNewPostText={props.store.upDateNewPostText.bind(props.store)}/>}/>
 
-                        <Route path="dialogs" element={<Dialogs messagePage={props.state.messagePage} addMessage={addMessage} upDateNewUserMessage={upDateNewUserMessage}/>}/> 
+                        <Route path="dialogs" element={<Dialogs messagePage={props.store.getState().messagePage} addMessage={props.store.addMessage.bind(props.store)} upDateNewUserMessage={props.store.upDateNewUserMessage.bind(props.store)}/>}/> 
                           
                     </Routes>
                 </div>

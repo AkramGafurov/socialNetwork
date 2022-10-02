@@ -42,8 +42,6 @@ export type PostPageType = {
     addPost: (userPost:string)=>void
 }
 
-
-
 export type MyPostPageType = {
     postPage: ProfilePageType
     addPost: ()=>void
@@ -51,5 +49,17 @@ export type MyPostPageType = {
 }
 
 export type AppPropsType = {
-    state: RootPageType,
+    store: StoreType,
+}
+
+export type StoreType = {
+    _subscriber: ()=>void,
+    _state: RootPageType, 
+    addPost: ()=>void,
+    upDateNewPostText: (newText:string)=>void,
+    addMessage: ()=>void,
+    upDateNewUserMessage: (newMessage:string)=> void
+    getState: ()=>RootPageType,
+    subscribe: (observer: ()=>void)=>void
+
 }

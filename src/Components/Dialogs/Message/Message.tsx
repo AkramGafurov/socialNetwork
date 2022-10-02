@@ -4,7 +4,7 @@ import {UserMessageType} from "../../Redux/Type"
 
 const Message = (props: UserMessageType) => {
     return (
-        <div className={s.message}>{props.message}!</div>
+        <div className={s.message}>{props.message}</div>
     )
 }
 

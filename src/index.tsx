@@ -1,29 +1,27 @@
-import './index.css';
-import state, {subscriber}from './Components/Redux/State'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import store from './Components/Redux/State'
 import App from './App';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {RootPageType} from './Components/Redux/Type' 
 
-const rerenderEntireTree = (state: RootPageType)=>{
-    const root = ReactDOM.createRoot(
-      document.getElementById('root') as HTMLElement
+const root = ReactDOM.createRoot(
+    document.getElementById('root') as HTMLElement
   );
 
+const rerenderEntireTree = ()=>{
     root.render(
         <React.StrictMode>   
             <BrowserRouter> 
-                <App state={state}/>
+                <App store={store}/>
             </BrowserRouter>
         </React.StrictMode>
-    );
-    
+    );   
 }
+rerenderEntireTree()
+store.subscribe(rerenderEntireTree);
 
-rerenderEntireTree(state)
-subscriber(rerenderEntireTree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
